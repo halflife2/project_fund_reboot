@@ -41,12 +41,6 @@ http://www.hellodatascience.com/?p=557
 ### yahoo finance
 http://estenpark.tistory.com/348
 
-## DB관련
-
-주소: ghjuy.iptime.org
-포트: 3306
-ID: webuser
-pass: abcd1234
 
 ## lib
 

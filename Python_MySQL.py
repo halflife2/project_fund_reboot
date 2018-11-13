@@ -1,7 +1,7 @@
 import MySQLdb
 
 # Open database connection
-db = MySQLdb.connect("ghjuy.iptime.org","webuser","abcd1234","WordDB" )
+db = MySQLdb.connect("1","1","1","1" )
 
 # prepare a cursor object using cursor() method
 cursor = db.cursor()
