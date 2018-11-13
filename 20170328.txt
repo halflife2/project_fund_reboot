@@ -1,0 +1,37 @@
+크롤링->단어분석(사용빈도수)
+
+크롤링에서 사용하는 라이브러리 : BeautifulSoup, urllib
+
+urllib
+-HTTP REQUEST를 보내고 HTTP RESPONSE를 받을때 필요한 라이브러리
+
+크롤러를 만들기 위해서 가장 먼저해야 할 일은 웹 서버에 웹 페이지를 요청하고 응답받을 수 있게 해야 한다
+이때 http 프로토콜에 따라 요청, 응답받기 위해 파이썬의 표준 모듈에 포함되어 있는 urllib 모듈을 사용한다.
+
+
+BeautifulSoup
+-urllib을 통해 받은 RESPONSE(HTML)를 파싱할때 필요한 라이브러리
+beautifulSoup는 HTML과 XML 파일에서 데이터를 읽어내는 파이썬 라이브러리로
+파서 트리를 탐색, 검색, 수정하는데 간편하고 사용자가 만든 파서와 함께 사용하기 쉽다.
+
+해당 라이브러리 문서 : https://www.crummy.com/software/BeautifulSoup/bs4/doc/#
+
+
+
+출처: http://hurderella.tistory.com/113 [Hurderella]
+
+
+Azure ML(Machine-Learning)
+Microsoft Azure 기계 학습 스튜디오는 데이터에 대한 예측 분석 솔루션을 빌드, 테스트, 배포할 수 있는 공동 끌어서 놓기 도구입니다.
+Azure 기계 학습 스튜디오 에서는 예측 분석 모델을 간편하게 빌드, 테스트, 반복할 수 있는 대화형 시각적 작업 영역을 제공합니다.
+
+Azure 기계 학습 스튜디오 에서는 예측 분석 모델을 간편하게 빌드, 테스트, 반복할 수 있는 대화형 시각적 작업 영역을 제공합니다. 
+데이터 집합과 분석 모듈을 대화형 캔버스로 끌어서 놓고 함께 연결하여 실험을 생성하고 Machine Learning 스튜디오에서 실행합니다. 
+모델 디자인을 반복하려면 실험을 편집하고 필요에 따라 복사본을 저장하고 실험을 다시 실행합니다. 
+
+프로그래밍이 필요하지 않고 데이터 집합과 모듈을 시각적으로 연결하면 예측 분석 모델을 구성할 수 있습니다.
+
+
+Azure ML 문서 : https://docs.microsoft.com/ko-kr/azure/machine-learning/machine-learning-what-is-ml-studio
+
+
