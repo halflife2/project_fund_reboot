@@ -18,10 +18,12 @@ driver = webdriver.Firefox(executable_path='/Users/ItsFriday/Documents/GitHub/pr
 driver.implicitly_wait(30)
 driver.get('https://kr.investing.com/stock-screener/?sp=country::11|sector::a|industry::a|equityType::a%3Ceq_market_cap;1')
 
-box = driver.find_elements_by_xpath("//table[@id='resultsTable']/tbody/tr")
-for item in box:
-    data = item.text
-    print(data, '\n')
+xpath = "//table[@id='resultsTable']/tbody/tr"
+box = driver.find_element_by_xpath(xpath)
+box2 = box.find_elements_by_css_selector('a').get_attribute('href')
+for item in box2:
+    data = item
+    print(data, end='')
 # for i in box:
 #     print(i, '\n')
 
