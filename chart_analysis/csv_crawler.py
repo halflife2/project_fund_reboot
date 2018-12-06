@@ -15,7 +15,6 @@ sys.stderr = io.TextIOWrapper(sys.stderr.detach(), encoding='utf-8')
 
 class SeleniumCrawler:
     def __init__(self):
-
         if platform.system() == 'Darwin':
             exe_path = '/Users/ItsFriday/Documents/GitHub/project_fund/geckodriver(mac)'
         elif platform.system() == 'Windows':
