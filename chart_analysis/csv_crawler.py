@@ -2,6 +2,7 @@ import ssl
 import sys
 import io
 import time
+import platform
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -15,7 +16,11 @@ sys.stderr = io.TextIOWrapper(sys.stderr.detach(), encoding='utf-8')
 class SeleniumCrawler:
     def __init__(self):
 
-        exe_path = '/Users/ItsFriday/Documents/GitHub/project_fund/geckodriver'
+        if platform.system() == 'Darwin':
+            exe_path = '/Users/ItsFriday/Documents/GitHub/project_fund/geckodriver(mac)'
+        elif platform.system() == 'Windows':
+            exe_path = '/project1/project_fund_reboot/geckodriver(win64)'
+
         self.driver = webdriver.Firefox(executable_path=exe_path)
         self.driver.implicitly_wait(3)
 
