@@ -120,7 +120,7 @@ dmypy.json
 .pyre/
 
 #.etc files
-.csv
+.DS_Store
 
 ### Python Patch ###
 .venv/
