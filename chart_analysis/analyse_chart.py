@@ -5,6 +5,7 @@ from os import chdir
 import csv
 import matplotlib as mpl
 import matplotlib.pylab as plt
+import pprint
 
 ssl._create_default_https_context = ssl._create_unverified_context
 sys.stdout = io.TextIOWrapper(sys.stdout.detach(), encoding='utf-8')
@@ -17,15 +18,14 @@ class StockAccount:
 
     def __init__(self, file_name):
 
-        #variable define
+        #self.variable define
 
 
-        # mean line variables define ( 5/ 10/ 30/ 60/ 120 days)
+        # mean line self.variables define ( 5/ 30/ 60/ 120 days)
         self.stock_5_mean_line = []
         self.stock_30_mean_line = []
         self.stock_60_mean_line = []
         self.stock_120_mean_line = []
-        self.stock_other_mean_line = []
 
         #change directory and save csv->self.stock
         chdir('/Users/ItsFriday/Documents/GitHub/project_fund/csv')
@@ -37,12 +37,12 @@ class StockAccount:
 
         chdir('/Users/ItsFriday/Documents/GitHub/project_fund')
 
-        self.slicing_price(self.stock)
+        self.list_slice(self.stock)
 
 
     def mean_line(self, date):
         '''이동평균선
-           5일 / 10일 / 30일 / 60일 / 120일 로 날짜 넣고 순서대로 작성'''
+           5일 / 30일 / 60일 / 120일 로 날짜 넣고 순서대로 작성'''
         stock_date_mean_line = []
 
         #slicing_stock = self.slicing_price()
@@ -76,12 +76,9 @@ class StockAccount:
         elif date == 120:
             self.stock_120_mean_line = stock_date_mean_line
             return self.stock_120_mean_line
-        else:
-            self.stock_other_mean_line = stock_date_mean_line
-            return self.stock_other_mean_line
 
 
-    def slicing_price(self, stock):
+    def list_slice(self, stock):
         '''slice list '''
 
         # replace'M', 'k' and multiple x1000, x1000000
@@ -100,6 +97,10 @@ class StockAccount:
             elif item[5] == '-':
                 item[5] = 0
 
+            #frame date
+            item[0] = item[0].replace('년', '-').replace(' ', '')
+            item[0] = item[0].replace('월', '-').replace('일', '')
+
             # delete ',' with price
             item[1] = item[1].replace(',', '')
             item[2] = item[2].replace(',', '')
@@ -108,26 +109,66 @@ class StockAccount:
 
         return self.stock
 
-    def plot_show(self):
+    def plot_show(self, stock1, stock2):
 
-        days = []
-        prices = []
 
-        for row in self.stock_30_mean_line:
-            if row[1] > 0:
-                days.append(row[0])
-                prices.append(row[1])
-            else:
-                pass
+        label_1, mean_1 = self.make_mean_label(stock1)
+        label_2, mean_2 = self.make_mean_label(stock2)
+
+        min_mean = min(mean_1, mean_2)
+        print(min_mean)
+
+        minimal_days = [row[0] for row in self.stock[min_mean+1::400]]
+        minimal_days.append(self.stock[-1][0])
+
+        days_1, prices_1 = make_values(stock1)
+        days_2, prices_2 = make_values(stock2)
 
         plt.title('mean line compare graph')
-        plt.plot(days, prices, label='30 mean line')
+
+
+        plt.plot(days_1, prices_1, 'c', label=label_1)
+        plt.plot(days_2, prices_2, 'r', label=label_2)
+        plt.xticks(minimal_days)
+
+
+        plt.legend(loc='upper right')
+
         plt.ylabel('price')
-        plt.xlabel('day')
+        plt.xlabel('days')
         plt.show()
 
+    def make_mean_label(self, stock):
+
+        if stock == self.stock_5_mean_line:
+            label = '5 mean line'
+            mean = 5
+        elif stock == self.stock_30_mean_line:
+            label = '30 mean line'
+            mean = 30
+        elif stock == self.stock_60_mean_line:
+            label = '60 mean line'
+            mean = 60
+        elif stock == self.stock_120_mean_line:
+            label = '120 mean line'
+            mean = 120
+
+        return label, mean
+
+def make_values(mean_lined_list):
+
+    days = [row[0] for row in mean_lined_list if row[1] > 0]
+    prices = [row[1] for row in mean_lined_list if row[1] > 0]
+
+    return days, prices
 
 
-stock_000270 = StockAccount('000270 역사적 데이터.csv')
-stock_000270.mean_line(30)
-stock_000270.plot_show()
+#make buttons
+Stock_ = StockAccount('005940 역사적 데이터.csv')
+
+list_5 = Stock_.mean_line(5)
+list_30 = Stock_.mean_line(30)
+list_60 = Stock_.mean_line(60)
+list_120 = Stock_.mean_line(120)
+
+Stock_.plot_show(list_5, list_120)
