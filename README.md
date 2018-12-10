@@ -4,10 +4,9 @@
 ### 중간보고서 구글독스
 https://docs.google.com/document/d/149tNnO9_fgC0vG7nJ1hdGc7D8aUZI5uexmH1pZG0sdw/edit?usp=sharing
 
-### Azure ML
-https://studio.azureml.net/
+###CSV -> web crawling 으로 변경 예정
+directiry에 CSV파일로 저장하는 방법은 비효율적임
 
-https://docs.microsoft.com/ko-kr/azure/machine-learning/machine-learning-create-experiment
 
 ### KoNLPy
 http://konlpy.org/ko/v0.4.4/
