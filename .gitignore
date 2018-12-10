@@ -121,6 +121,8 @@ dmypy.json
 
 #.etc files
 .DS_Store
+/csv
+/chart_analysis/url
 
 ### Python Patch ###
 .venv/
