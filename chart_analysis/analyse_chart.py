@@ -116,7 +116,6 @@ class StockAccount:
         label_2, mean_2 = self.make_mean_label(stock2)
 
         min_mean = min(mean_1, mean_2)
-        print(min_mean)
 
         minimal_days = [row[0] for row in self.stock[min_mean+1::400]]
         minimal_days.append(self.stock[-1][0])
@@ -127,8 +126,8 @@ class StockAccount:
         plt.title('mean line compare graph')
 
 
-        plt.plot(days_1, prices_1, 'c', label=label_1)
-        plt.plot(days_2, prices_2, 'r', label=label_2)
+        plt.plot(days_1, prices_1, 'r', label=label_1)
+        plt.plot(days_2, prices_2, 'b', label=label_2)
         plt.xticks(minimal_days)
 
 
@@ -166,9 +165,9 @@ def make_values(mean_lined_list):
 #make buttons
 Stock_ = StockAccount('005940 역사적 데이터.csv')
 
-list_5 = Stock_.mean_line(5)
-list_30 = Stock_.mean_line(30)
-list_60 = Stock_.mean_line(60)
-list_120 = Stock_.mean_line(120)
+mean_5 = Stock_.mean_line(5)
+mean_30 = Stock_.mean_line(30)
+mean_60 = Stock_.mean_line(60)
+mean_120 = Stock_.mean_line(120)
 
-Stock_.plot_show(list_5, list_120)
+Stock_.plot_show(mean_5, mean_120)
